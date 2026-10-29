@@ -1,13 +1,13 @@
-import React from "react";
-import '../styles/Navbar.css';  
+import React from 'react';
+import '../styles/Navbar.css';
 
-export default function Navbar() {
+export default function Navbar({ setVista }) {
     return (
         <nav className="navbar">
             <div className="navbar-logo">⚽ Futbolistas <span>Ultimate</span></div>
             <ul className="navbar-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#jugadores">Jugadores</a></li>
+                <li><button onClick={() => setVista('jugadores')} className="nav-link-btn">Jugadores</button></li>
+                <li><button onClick={() => setVista('historia')} className="nav-link-btn">Historia</button></li>
             </ul>
         </nav>
     );

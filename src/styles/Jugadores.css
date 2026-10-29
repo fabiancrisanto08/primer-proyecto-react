@@ -13,7 +13,7 @@ body {
     font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* Contenedor Base del Jugador */
+/* Contenedor Base del Jugador (Modo Horizontal Moderno) */
 .contenedor-jugadores {
     position: relative;
     max-width: 1100px;
@@ -27,23 +27,37 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
+    
+    /* Animación de entrada escalonada */
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: calc(var(--i) * 0.12s);
+    opacity: 0;
+    transform: translateY(25px);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .contenedor-jugadores:hover {
     transform: translateY(-4px);
     border-color: #3b82f6;
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.15);
 }
 
+/* Imagen del Jugador */
 .imagen-jugadores {
     width: 40%;
     height: 100%;
     object-fit: cover;
     object-position: center top;
-    transition: all 0.5s ease;
 }
 
+/* Bloque de Texto */
 .contenedor-texto-jugadores {
     width: 60%;
     padding: 30px 40px;
@@ -51,9 +65,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition: all 0.5s ease;
 }
 
+/* Etiqueta de Club y País */
 .club-pais-tag {
     font-size: 0.85rem;
     font-weight: 600;
@@ -63,6 +77,7 @@ body {
     margin-bottom: 4px;
 }
 
+/* Nombre del Jugador */
 .nombre-jugadores {
     font-size: 1.6rem;
     font-weight: 700;
@@ -70,6 +85,7 @@ body {
     margin: 0 0 6px 0;
 }
 
+/* Posición */
 .posicion-jugadores {
     font-size: 0.95rem;
     font-weight: 600;
@@ -79,101 +95,12 @@ body {
     margin-bottom: 14px;
 }
 
+/* Testimonio / Descripción */
 .texto-jugadores {
     font-size: 1rem;
     line-height: 1.6;
     color: #9ca3af;
     margin: 0;
-}
-
-.stats-fifa {
-    display: none;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 15px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* ===================================================
-   ESTILOS MODO CARTA FIFA (Al hacer clic)
-   =================================================== */
-
-.contenedor-jugadores.modo-fifa {
-    width: 300px;
-    height: 480px;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 20px 15px;
-    text-align: center;
-    background: linear-gradient(135deg, #1a1508 0%, #3a2e10 50%, #1a1508 100%);
-    border: 2px solid #eab308;
-    box-shadow: 0 0 35px rgba(234, 179, 8, 0.3), 0 20px 40px rgba(0,0,0,0.9);
-    clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
-    border-radius: 12px 12px 0 0;
-}
-
-.contenedor-jugadores.modo-fifa .imagen-jugadores {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid #eab308;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-    margin-bottom: 10px;
-    object-position: center top;
-}
-
-.contenedor-jugadores.modo-fifa .contenedor-texto-jugadores {
-    width: 100%;
-    padding: 0;
-    align-items: center;
-}
-
-.contenedor-jugadores.modo-fifa .club-pais-tag {
-    color: #fef08a;
-    font-size: 0.75rem;
-    margin-bottom: 2px;
-}
-
-.contenedor-jugadores.modo-fifa .nombre-jugadores {
-    font-size: 1.3rem;
-    color: #fef08a;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 2px;
-}
-
-.contenedor-jugadores.modo-fifa .posicion-jugadores {
-    color: #eab308;
-    font-size: 0.95rem;
-    font-weight: 800;
-    margin-bottom: 8px;
-}
-
-.contenedor-jugadores.modo-fifa .texto-jugadores {
-    display: none;
-}
-
-.contenedor-jugadores.modo-fifa .stats-fifa {
-    display: grid;
-    opacity: 1;
-    width: 100%;
-    padding: 8px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 8px;
-    border: 1px solid rgba(234, 179, 8, 0.3);
-}
-
-.stat-item {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.7rem;
-    color: #d1d5db;
-}
-
-.stat-item strong {
-    font-size: 1rem;
-    color: #ffffff;
 }
 
 /* Responsivo para móviles */
@@ -193,67 +120,4 @@ body {
         padding: 24px;
         text-align: center;
     }
-}
-
-/* (Mantén todo tu CSS anterior y añade esto al final o actualiza las clases correspondientes) */
-
-/* Animación de entrada escalonada (Idea 6) */
-.contenedor-jugadores {
-    animation: fadeInUp 0.6s ease forwards;
-    animation-delay: calc(var(--i) * 0.12s); /* Cada tarjeta entra un poco después de la anterior */
-    opacity: 0;
-    transform: translateY(25px);
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Insignia OVR Flotante (Idea 8) */
-.ovr-badge {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: rgba(13, 15, 20, 0.9);
-    border: 2px solid #38bdf8;
-    color: #ffffff;
-    padding: 6px 12px;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1.1;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    z-index: 10;
-    pointer-events: none;
-    transition: all 0.4s ease;
-}
-
-.ovr-numero {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: #38bdf8;
-}
-
-.ovr-pos {
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: #9ca3af;
-    letter-spacing: 0.05em;
-}
-
-/* Adaptación de la insignia OVR cuando se convierte en Carta FIFA */
-.contenedor-jugadores.modo-fifa .ovr-badge {
-    top: 15px;
-    left: 15px;
-    border-color: #eab308;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.contenedor-jugadores.modo-fifa .ovr-numero {
-    color: #fef08a;
-    font-size: 1.35rem;
 }

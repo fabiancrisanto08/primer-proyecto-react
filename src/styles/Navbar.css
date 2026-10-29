@@ -44,3 +44,17 @@
 .navbar-links a:hover {
     color: #ffffff;
 }
+
+.nav-link-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.nav-link-btn:hover {
+    color: #ffffff;
+}
